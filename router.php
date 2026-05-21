@@ -23,9 +23,8 @@ public function get($url, $fn) {
 
     if($fn) {
         // la funcion existe 
-        call_user_func($fn, $this);
-
         
+        call_user_func($fn, $this);
     } else {
         echo "Pagina no encontrada"; 
     } 
