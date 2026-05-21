@@ -3,7 +3,7 @@
         'name' => 'mauricioaguirre/bienesraices_inicio',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'c3a003e165f997534d2050d5c0c28071d2cf3956',
+        'reference' => '7ef9bc2b1a8d33ad3fa0951af8f0769565cbb9be',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -31,7 +31,7 @@
         'mauricioaguirre/bienesraices_inicio' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'c3a003e165f997534d2050d5c0c28071d2cf3956',
+            'reference' => '7ef9bc2b1a8d33ad3fa0951af8f0769565cbb9be',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
