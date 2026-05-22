@@ -36,9 +36,12 @@ class Router
 
 
     // Muestra una vista 
-    public function render($view)
+    public function render($view, $datos = [])
     {
 
+    foreach($datos as $key => $value){
+        $$key = $value; 
+    }
         ob_start(); // inicia el amacenamiento el memoria
         include __DIR__ . "/views/$view.php";
 
@@ -46,6 +49,6 @@ class Router
 
         include __DIR__ . "/views/layout.php"; 
 
-        
+
     }
 }
