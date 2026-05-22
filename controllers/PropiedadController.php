@@ -1,19 +1,33 @@
-<?php 
+<?php
 
-namespace Controllers; 
-use MVC\Router; 
+namespace Controllers;
+use MVC\Router;
+use Model\Propiedad;
 
-class PropiedadController {
+class PropiedadController
+{
 
-    public static  function index(Router $router) {   
-      $router->render('propiedades/admin', ['mensaje' => 'Desde la vista']); 
-    } 
 
-    public static function crear() {
+
+    public static function index(Router $router)
+    {
+
+        $propiedades = Propiedad::all();
+        $resultado  = null; 
+
+        $router->render('propiedades/admin', ['propiedades' => $propiedades
+        , 'resultado' => $resultado]);
+
+
+    }
+
+    public static function crear()
+    {
         echo "crear propiedad";
     }
 
-    public static function actualizar() {
-        echo "actualizar propiedad"; 
+    public static function actualizar()
+    {
+        echo "actualizar propiedad";
     }
 }
