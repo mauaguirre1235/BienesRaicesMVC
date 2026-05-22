@@ -1,40 +1,51 @@
-<?php   
+<?php
 
 namespace MVC;
-class Router {
+class Router
+{
 
-public $rutasGET = []; 
-public $rutasPOST = []; 
+    public $rutasGET = [];
+    public $rutasPOST = [];
 
-public function get($url, $fn) { 
-    $this->rutasGET[$url] = $fn;
-
-
-}
-
-   public function comprobarRutas(){
-    $urlActual = $_SERVER["PATH_INFO"] ?? '/';
-    $metodo = $_SERVER['REQUEST_METHOD'];
-
-    if($metodo === 'GET'){  
-        
-    $fn =  $this->rutasGET[$urlActual] ?? null; 
-    } 
-
-    if($fn) {
-        // la funcion existe 
-        
-        call_user_func($fn, $this);
-    } else {
-        echo "Pagina no encontrada"; 
-    } 
-
-   }
+    public function get($url, $fn)
+    {
+        $this->rutasGET[$url] = $fn;
 
 
-   // Muestra una vista 
-   public function render($view){
-
-  include __DIR__ . "/views/$view.php"; 
-   }
     }
+
+    public function comprobarRutas()
+    {
+        $urlActual = $_SERVER["PATH_INFO"] ?? '/';
+        $metodo = $_SERVER['REQUEST_METHOD'];
+
+        if ($metodo === 'GET') {
+
+            $fn = $this->rutasGET[$urlActual] ?? null;
+        }
+
+        if ($fn) {
+            // la funcion existe 
+
+            call_user_func($fn, $this);
+        } else {
+            echo "Pagina no encontrada";
+        }
+
+    }
+
+
+    // Muestra una vista 
+    public function render($view)
+    {
+
+        ob_start(); // inicia el amacenamiento el memoria
+        include __DIR__ . "/views/$view.php";
+
+        $contenido = ob_get_clean(); // limpia esa memoria
+
+        include __DIR__ . "/views/layout.php"; 
+
+        
+    }
+}
