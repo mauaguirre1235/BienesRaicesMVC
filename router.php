@@ -44,7 +44,7 @@ class Router
     }
         ob_start(); // inicia el amacenamiento el memoria
         include __DIR__ . "/views/$view.php";
-
+ 
         $contenido = ob_get_clean(); // limpia esa memoria
 
         include __DIR__ . "/views/layout.php"; 
