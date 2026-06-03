@@ -3,7 +3,7 @@
 
 define('TEMPLATES_URL', __DIR__ . '/templates'); // guarda la ruta completa hacia la carpeta templates
 define('FUNCIONES_URL', __DIR__ .'funciones.php'); // guarda el nombre del archivo donde estan las funciones comunes 
-define('CARPETA_IMAGENES', __DIR__ . '/../imagenes/'); // guarda la ruta completa hacia la carpeta de imagenes
+define('CARPETA_IMAGENES', $_SERVER['DOCUMENT_ROOT'] . '/imagenes/'); // guarda la ruta completa hacia la carpeta de imagenes
 
 
 
