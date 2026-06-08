@@ -43,10 +43,10 @@ if ($resultado) {
               <input type="hidden" name="tipo" value="propiedad"> 
               <input type="submit" class="boton-rojo-block" value="Eliminar">
             </form>
-            <a href="admin/propiedades/actualizar.php?id=<?php echo $propiedad->id; ?>"
+            <a href="/propiedades/actualizar?id=<?php echo $propiedad->id; ?>"
               class="boton-amarillo-block">Actualizar</a>
           </td>
-        </tr>
+        </tr> 
       <?php endforeach; ?>
 
     </tbody>
