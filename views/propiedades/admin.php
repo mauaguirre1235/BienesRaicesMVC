@@ -37,7 +37,7 @@ if ($resultado) {
           <td><img src="/imagenes/<?php echo $propiedad->imagen; ?> " class="imagen-tabla"></td>
           <td> <?php echo $propiedad->precio; ?> </td>
           <td>
-            <form method="POST" class="w-100">
+            <form method="POST" class="w-100" action="/propiedades/eliminar">
 
               <input type="hidden" name="id" value="<?php echo $propiedad->id; ?>">
               <input type="hidden" name="tipo" value="propiedad"> 
@@ -47,7 +47,7 @@ if ($resultado) {
               class="boton-amarillo-block">Actualizar</a>
           </td>
         </tr> 
-      <?php endforeach; ?>
+      <?php endforeach; ?> 
 
     </tbody>
   </table>
