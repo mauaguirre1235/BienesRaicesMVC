@@ -48,10 +48,29 @@ class VendedorController
         // obteer datos del vendedor a actualizar
         $vendedor = Vendedor::find($id);
 
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+            // Asignar los valores 
+            $args = $_POST['vendedor'];
+
+            // sincronizar objeto en memri con lo que el usaurio escribio
+            $vendedor->sincronizar($args);
+
+            // validacion 
+            $errores = $vendedor->validar();
+
+            if (empty($errores)) {
+                $vendedor->guardar();
+            }
+
+        } 
         $router->render(
             'vendedores/actualizar',
-            ['errores' => $errores,
-            'vendedor' => $vendedor]
+            [
+                'errores' => $errores,
+                'vendedor' => $vendedor
+
+            ]
 
         );
 
