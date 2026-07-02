@@ -78,6 +78,10 @@ class VendedorController
 
     public static function eliminar()
     {
-        echo "Crear vendedor";
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $tipo = $_POST['tipo']; 
+
+            debuguear($_POST);
+        }
     }
 }
