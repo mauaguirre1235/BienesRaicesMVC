@@ -72,7 +72,7 @@ if ($resultado) {
           <td> <?php echo $vendedor->nombre . " " . $vendedor->apellido; ?> </td>
           <td> <?php echo $vendedor->telefono; ?> </td>
           <td>
-            <form method="POST" class="w-100">
+            <form method="POST" class="w-100" action="/vendedores/eliminar">
 
               <input type="hidden" name="id" value="<?php echo $vendedor->id; ?>">
               <input type="hidden" name="tipo" value="vendedor">
