@@ -26,13 +26,19 @@ class PaginasController
          $router->render('paginas/nosotros', []); 
 
     }
-    public static function propiedades()
+    public static function propiedades(Router $router)
     {
-        echo "Desde propiedades";
-    }
-    public static function propiedad()
-    {
-        echo "Desde propiedad";
+        $propiedades = Propiedad::all(); 
+        $router->render('paginas/propiedades', ['propiedades' => $propiedades]);
+    } 
+    public static function propiedad(Router $router)
+    { 
+        $id = validarORedireccionar('/propiedades');
+
+        // buscar la propiedad por su id 
+        $propiedad = Propiedad::find($id);
+
+        $router->render('paginas/propiedad', ['propiedad' => $propiedad]);
     }
     public static function blog()
     {
