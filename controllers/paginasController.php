@@ -40,13 +40,14 @@ class PaginasController
 
         $router->render('paginas/propiedad', ['propiedad' => $propiedad]);
     }
-    public static function blog()
+    public static function blog(Router $router)
     {
-        echo "Desde blog";
+        $router->render('paginas/blog');
     }
-    public static function entrada()
+    public static function entrada(Router $router)
     {
-        echo "Desde entrada";
+        $router->render('paginas/entrada'); 
+
     }
     public static function contacto()
     {

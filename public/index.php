@@ -35,4 +35,4 @@ $router->get('/contacto', [PaginasController::class, 'contacto']);
 $router->post('/contacto', [PaginasController::class, 'contacto']); 
 
 
-$router->comprobarRutas();
+$router->comprobarRutas(); 
