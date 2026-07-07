@@ -23,8 +23,8 @@
                 <input id="telefono" type="tel" placeholder="Telefono" name="contacto[telefono]" >
 
                 
-                 <label for="mensaje" name="contacto[mensaje">Mensaje:</label>
-                <textarea id="mensaje" required> </textarea>
+                 <label for="mensaje" >Mensaje:</label>
+                <textarea id="mensaje" name="contacto[mensaje]" required> </textarea>
             </fieldset>
 
             <fieldset>
@@ -41,7 +41,7 @@
             </fieldset>
 
             <fieldset>
-                <legend>Contactado</legend>
+                <legend>Informacion sobre la propiedad</legend>
                 
                 <p>Como desea ser contactado</p>
 
@@ -60,7 +60,7 @@
                 <label for="hora">Hora:</label>
                 <input id="hora" type="time" min="09:00" max="18:00" name="contacto[hora]">
 
-            </fieldset>
+            </fieldset> 
 
             <input type="submit" value="Enviar" class="boton-verde">
 
