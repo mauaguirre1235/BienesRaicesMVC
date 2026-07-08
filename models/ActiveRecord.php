@@ -146,7 +146,7 @@ $resultado = self::$db->query($query);
     
   }
 
-  // Validacion   
+  // Validacion    
 
   public static function getErrores()
   {
