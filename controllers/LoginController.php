@@ -5,38 +5,52 @@ namespace Controllers;
 use MVC\Router;
 use Model\Admin;
 
-class LoginController {
-public static function login(Router $router){
+class LoginController
+{
+    public static function login(Router $router)
+    {
 
-    $errores = []; 
+        $errores = [];
 
-    if($_SERVER['REQUEST_METHOD'] === 'POST'){
-        $auth = new Admin($_POST);
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $auth = new Admin($_POST);
 
-        $errores = $auth->validar();  
+            $errores = $auth->validar();
 
-        if(empty($errores)) {
-            // verificar si el usuario existe
-            $resultado = $auth->existeUsuario();
+            if (empty($errores)) {
+                // verificar si el usuario existe
+                $resultado = $auth->existeUsuario();
 
-            if(!$resultado){
-                $errores = Admin::getErrores(); 
+                if (!$resultado) {
+                    // verificar si el usuario existe o no (mensaje de error)
+                    $errores = Admin::getErrores();
+                } else {
+                    // verificar el password
+                    $autenticado = $auth->comprobarPassword($resultado);
+
+                    if ($autenticado) {
+                        // autenticar al usuario
+                    } else {
+                        // password incorrecto (mensaje de error)
+                         $errores = Admin::getErrores();
+                    }
+
+
+                }
+
             }
-            // verificar el password
-
-            // autenticar al usuario
         }
+
+        $router->render('auth/login', [
+            'errores' => $errores
+
+        ]);
+
     }
-
-    $router->render('auth/login', [
-        'errores' => $errores
-
-    ]);
-
-}
-public static function logout(){
-    echo "desde logout";
-}
+    public static function logout()
+    {
+        echo "desde logout";
+    }
 
 
 
