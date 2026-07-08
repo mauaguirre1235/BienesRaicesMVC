@@ -5,13 +5,13 @@ class Router
 {
 
     public $rutasGET = [];
-    public $rutasPOST = []; 
+    public $rutasPOST = [];
 
     public function get($url, $fn)
     {
         $this->rutasGET[$url] = $fn;
     }
-     public function post($url, $fn)
+    public function post($url, $fn)
     {
         $this->rutasPOST[$url] = $fn;
     }
@@ -19,16 +19,31 @@ class Router
 
     public function comprobarRutas()
     {
+        session_start();
+
+        $auth = $_SESSION['login'] ?? null;
+
+
+        // Arreglo de rutas protegida.. 
+        $rutas_protegidas = ['/admin' , '/propiedades/crear','/propiedades/actualizar', 'propiedades/eliminar' ,'/vendedores/crear', '/vendedores/actualizar', '/vendedores/eliminar'];
+
+
         $urlActual = $_SERVER["PATH_INFO"] ?? '/';
         $metodo = $_SERVER['REQUEST_METHOD'];
 
-        if($metodo === 'GET') {
+        if ($metodo === 'GET') {
 
             $fn = $this->rutasGET[$urlActual] ?? null;
         } else {
-            $fn = $this->rutasPOST[$urlActual] ?? null; 
+            $fn = $this->rutasPOST[$urlActual] ?? null;
         }
- 
+
+        // Proteger las rutas 
+        if (in_array($urlActual, $rutas_protegidas ) && !$auth) {
+            header('Location: /');
+
+        }
+
         if ($fn) {
             // la funcion existe 
 
@@ -44,15 +59,15 @@ class Router
     public function render($view, $datos = [])
     {
 
-    foreach($datos as $key => $value){
-        $$key = $value; 
-    }
+        foreach ($datos as $key => $value) {
+            $$key = $value;
+        }
         ob_start(); // inicia el amacenamiento el memoria
         include __DIR__ . "/views/$view.php";
- 
+
         $contenido = ob_get_clean(); // limpia esa memoria
 
-        include __DIR__ . "/views/layout.php"; 
+        include __DIR__ . "/views/layout.php";
 
 
     }
